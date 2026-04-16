@@ -13,14 +13,28 @@ export const getImageUrl = (imagePath) => {
         return imagePath;
     }
 
-    // Construct URL to backend server
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
-    const baseUrl = API_BASE_URL.endsWith('/') ? API_BASE_URL.slice(0, -1) : API_BASE_URL;
+    // Use explicit backend URL if provided, otherwise derive it from API URL
+    let baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    
+    if (!baseUrl) {
+        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || process.env.REACT_APP_API_URL || '';
+        // If API URL ends with /api, strip it for assets
+        baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
+    }
 
-    // Ensure proper path formatting
+    // If no base URL is defined (relative path on the same host)
+    if (!baseUrl || baseUrl === '/') {
+        // Fallback to absolute relative path
+        const path = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+        return path;
+    }
+
+    // Remove trailing slash from baseUrl
+    const cleanedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    // Ensure imagePath starts with a slash
     const path = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
 
-    return `${baseUrl}${path}`;
+    return `${cleanedBaseUrl}${path}`;
 };
 
 /**

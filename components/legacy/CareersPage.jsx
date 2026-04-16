@@ -9,13 +9,13 @@ import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { format } from 'date-fns';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop';
-import SocialMediaWidget from '../components/SocialMediaWidget';
-import Loading from '../components/Loading';
-import { GridPlaceholder } from '../components/PlaceholderCard';
-import { companyAPI, careerAPI } from '../api/apiService';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
+import SocialMediaWidget from '@/components/SocialMediaWidget';
+import Loading from '@/components/Loading';
+import { GridPlaceholder } from '@/components/PlaceholderCard';
+import { companyAPI, careerAPI } from '@/api/apiService';
 
 const CareersPage = () => {
     const [loading, setLoading] = useState(true);

@@ -5,11 +5,11 @@ import { Chip } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import { serviceAPI } from '../api/apiService';
-import { getImageUrl } from '../utils/imageUtils';
-import Loading from '../components/Loading';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { serviceAPI } from '@/api/apiService';
+import { getImageUrl } from '@/utils/imageUtils';
+import Loading from '@/components/Loading';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const ServiceDetail = ({ companyInfo, currentSlug }) => {
     const { slug: paramSlug } = useParams();

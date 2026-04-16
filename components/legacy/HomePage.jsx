@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
 // Section Components
-import HeroSection from '../components/sections/HeroSection';
-import AboutSection from '../components/sections/AboutSection';
-import ServicesSection from '../components/sections/ServicesSection';
-import ValuesSection from '../components/sections/ValuesSection';
-import StatsSection from '../components/sections/StatsSection';
-import ProductsSection from '../components/sections/ProductsSection';
-import PartnersSection from '../components/sections/PartnersSection';
-import ClientsSection from '../components/sections/ClientsSection';
-import NewsSection from '../components/sections/NewsSection';
-import EventsSection from '../components/sections/EventsSection';
-import ContactSection from '../components/sections/ContactSection';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop';
-import SocialMediaWidget from '../components/SocialMediaWidget';
-import Loading from '../components/Loading';
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import ServicesSection from '@/components/sections/ServicesSection';
+import ValuesSection from '@/components/sections/ValuesSection';
+import StatsSection from '@/components/sections/StatsSection';
+import ProductsSection from '@/components/sections/ProductsSection';
+import PartnersSection from '@/components/sections/PartnersSection';
+import ClientsSection from '@/components/sections/ClientsSection';
+import NewsSection from '@/components/sections/NewsSection';
+import EventsSection from '@/components/sections/EventsSection';
+import ContactSection from '@/components/sections/ContactSection';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
+import SocialMediaWidget from '@/components/SocialMediaWidget';
+import Loading from '@/components/Loading';
 
 // API Services
 import {
@@ -29,7 +29,7 @@ import {
     clientAPI,
     newsAPI,
     eventAPI,
-} from '../api/apiService';
+} from '@/api/apiService';
 
 const HomePage = () => {
     const [loading, setLoading] = useState(true);

@@ -8,11 +8,11 @@ import CategoryIcon from '@mui/icons-material/Category';
 import DownloadIcon from '@mui/icons-material/Download';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { productAPI } from '../api/apiService';
-import { getImageUrl, parseJSON } from '../utils/imageUtils';
-import Loading from '../components/Loading';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { productAPI } from '@/api/apiService';
+import { getImageUrl, parseJSON } from '@/utils/imageUtils';
+import Loading from '@/components/Loading';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const ProductDetail = ({ companyInfo, currentSlug }) => {
     const { slug: paramSlug } = useParams();

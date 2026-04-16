@@ -12,12 +12,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EventIcon from '@mui/icons-material/Event';
-import { eventAPI } from '../api/apiService';
-import { getImageUrl, parseJSON } from '../utils/imageUtils';
+import { eventAPI } from '@/api/apiService';
+import { getImageUrl, parseJSON } from '@/utils/imageUtils';
 import { format } from 'date-fns';
-import Loading from '../components/Loading';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Loading from '@/components/Loading';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const EventDetail = ({ companyInfo, currentSlug }) => {
     const { slug: paramSlug } = useParams();

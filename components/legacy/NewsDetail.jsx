@@ -8,12 +8,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import ShareIcon from '@mui/icons-material/Share';
-import { newsAPI } from '../api/apiService';
-import { getImageUrl, parseJSON } from '../utils/imageUtils';
+import { newsAPI } from '@/api/apiService';
+import { getImageUrl, parseJSON } from '@/utils/imageUtils';
 import { format } from 'date-fns';
-import Loading from '../components/Loading';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Loading from '@/components/Loading';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const NewsDetail = ({ companyInfo, currentSlug }) => {
     const { slug: paramSlug } = useParams();

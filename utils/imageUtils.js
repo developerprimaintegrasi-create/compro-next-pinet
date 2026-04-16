@@ -1,6 +1,7 @@
 /**
  * Helper function to construct full image URL from backend
- * Handles both relative paths and absolute URLs
+ * Uses Next.js API proxy route (/api/uploads) to avoid mixed content issues
+ * when transitioning from HTTP to HTTPS with a custom domain
  * 
  * @param {string} imagePath - The image path from backend (e.g., '/uploads/logo.png')
  * @returns {string|null} - Full URL to access the image
@@ -13,28 +14,16 @@ export const getImageUrl = (imagePath) => {
         return imagePath;
     }
 
-    // Use explicit backend URL if provided, otherwise derive it from API URL
-    let baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-    
-    if (!baseUrl) {
-        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || process.env.REACT_APP_API_URL || '';
-        // If API URL ends with /api, strip it for assets
-        baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
+    // Extract the actual file path (e.g., '/uploads/images/file.png' -> 'images/file.png')
+    let filePath = imagePath;
+    if (imagePath.startsWith('/uploads/')) {
+        filePath = imagePath.replace('/uploads/', '');
     }
 
-    // If no base URL is defined (relative path on the same host)
-    if (!baseUrl || baseUrl === '/') {
-        // Fallback to absolute relative path
-        const path = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
-        return path;
-    }
-
-    // Remove trailing slash from baseUrl
-    const cleanedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-    // Ensure imagePath starts with a slash
-    const path = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
-
-    return `${cleanedBaseUrl}${path}`;
+    // Always use local API proxy route to serve images
+    // This ensures HTTPS compatibility and avoids mixed content warnings
+    // The API route at /api/uploads/[...path] serves from the symlinked backend uploads folder
+    return `/api/uploads/${filePath}`;
 };
 
 /**
